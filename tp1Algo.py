@@ -8,6 +8,7 @@ from selectionSort import selectionSort
 from quickSort import quickSortStart
 from triabulle import triaBulle
 from triinsertion import triinsertion
+from recherchedichotomique import recherche_dichotomique
 
 # Nombre de tableaux à générer
 arraysNumber = 4
@@ -59,6 +60,7 @@ def mesurer_temps_execution (fonction, *args) :
 
 # Appel des fonctions de recherche et de tri
 searchArray(linearSearch, "Recherche linéaire")
+searchArray(recherche_dichotomique, "Recherche dichotomique")
 sortArray(selectionSort, "Tri par sélection")
 sortArray(quickSortStart, "Tri rapide")
 sortArray(triaBulle, "Tri à bulle")
