@@ -58,3 +58,5 @@ def mesurer_temps_execution (fonction, *args) :
 searchArray(linearSearch, "Recherche linéaire")
 sortArray(selectionSort, "Tri par sélection")
 sortArray(quickSortStart, "Tri rapide")
+
+#test
