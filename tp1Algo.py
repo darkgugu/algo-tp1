@@ -6,7 +6,8 @@ from generateArrays import generateArrays
 from linearSearch import linearSearch
 from selectionSort import selectionSort
 from quickSort import quickSortStart
-from triabulle import TriaBulle
+from triabulle import triaBulle
+from triinsertion import triinsertion
 
 # Nombre de tableaux à générer
 arraysNumber = 4
@@ -59,6 +60,5 @@ def mesurer_temps_execution (fonction, *args) :
 searchArray(linearSearch, "Recherche linéaire")
 sortArray(selectionSort, "Tri par sélection")
 sortArray(quickSortStart, "Tri rapide")
-sortArray(TriaBulle, "Tri à bulle")
-
-#test
+sortArray(triaBulle, "Tri à bulle")
+sortArray(triinsertion, "Tri par insertion")

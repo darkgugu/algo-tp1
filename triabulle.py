@@ -1,4 +1,4 @@
-def TriaBulle(arr):
+def triaBulle(arr):
     n = len(arr)
 
     for i in range(n):
