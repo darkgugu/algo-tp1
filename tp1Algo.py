@@ -39,10 +39,11 @@ def sortArray(sortingFunction, name) :
     print(f'#### {name} ####')
     for i in range(arraysNumber) :
         print(f'Tableau {i+1} ({len(arrays[i])} éléments) :')
+        displayArray = arrays[i].copy()
         result = mesurer_temps_execution(sortingFunction, arrays[i])
         if(printArrays != 'n') :
             print('Tableau non trié : ')
-            print(arrays[i])
+            print(displayArray)
             print('Tableau trié : ')
             print(result[1])
         print(f"Temps d'éxecution : {result[0]} secondes")
