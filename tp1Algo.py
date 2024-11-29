@@ -6,8 +6,10 @@ from generateArrays import generateArrays
 from linearSearch import linearSearch
 from selectionSort import selectionSort
 from quickSort import quickSortStart
+from mergeSort import mergeSort
 from triabulle import triaBulle
 from triinsertion import triinsertion
+from trihollandais import trihollandais
 from recherchedichotomique import recherche_dichotomique
 
 # Nombre de tableaux à générer
@@ -65,3 +67,5 @@ sortArray(selectionSort, "Tri par sélection")
 sortArray(quickSortStart, "Tri rapide")
 sortArray(triaBulle, "Tri à bulle")
 sortArray(triinsertion, "Tri par insertion")
+sortArray(trihollandais, "Tri hollandais")
+sortArray(mergeSort, "Tri fusion")
