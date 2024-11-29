@@ -13,7 +13,7 @@ from trihollandais import trihollandais
 from recherchedichotomique import recherche_dichotomique
 
 # Nombre de tableaux à générer
-arraysNumber = 4
+arraysNumber = 1
 
 # Demande à l'utilisateur s'il veut afficher les tableaux avant et après les opérations
 print("Do you want to print the before/after arrays and the results of the searches? (y/n)")
@@ -43,6 +43,8 @@ def sortArray(sortingFunction, name) :
     arrays = generateArrays(arraysNumber)
     print(f'#### {name} ####')
     for i in range(arraysNumber) :
+        if name == "Tri hollandais" : 
+            arrays[i] = translate(arrays[i])
         print(f'Tableau {i+1} ({len(arrays[i])} éléments) :')
         displayArray = arrays[i].copy()
         result = mesurer_temps_execution(sortingFunction, arrays[i])
@@ -59,6 +61,12 @@ def mesurer_temps_execution (fonction, *args) :
     result = fonction(*args)
     fin = time.time()
     return [fin - debut, result]
+
+def translate(array) :
+    dutchArray = []
+    for i in range(len(array)) : 
+        dutchArray.append(array[i]%3)
+    return dutchArray
 
 # Appel des fonctions de recherche et de tri
 searchArray(linearSearch, "Recherche linéaire")
