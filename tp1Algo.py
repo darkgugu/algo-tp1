@@ -13,7 +13,10 @@ from trihollandais import trihollandais
 from recherchedichotomique import recherche_dichotomique
 
 # Nombre de tableaux à générer
-arraysNumber = 1
+arraysNumber = 3
+
+# Tableau conclusion
+conclusionArray = []
 
 # Demande à l'utilisateur s'il veut afficher les tableaux avant et après les opérations
 print("Do you want to print the before/after arrays and the results of the searches? (y/n)")
@@ -23,6 +26,7 @@ while(printArrays != 'y' and printArrays != 'n') :
 
 def searchArray(searchFunction, name) : 
     arrays = generateArrays(arraysNumber)
+    execTimes = []
     print(f'#### {name} ####')
     for i in range (arraysNumber) :
         numberToFind = random.randrange(1, 100)
@@ -38,9 +42,15 @@ def searchArray(searchFunction, name) :
                 print('Nombre non trouvé dans le tableau')
         print(f"Temps d'éxecution : {result[0]} secondes")
         print('---------------------------------')
+        execTimes.append(result[0])
+    print('')
+    print('')
+    reportObj = {'name' : name, 'execTimes' : execTimes}
+    conclusionArray.append(reportObj)
 
 def sortArray(sortingFunction, name) : 
     arrays = generateArrays(arraysNumber)
+    execTimes = []
     print(f'#### {name} ####')
     for i in range(arraysNumber) :
         if name == "Tri hollandais" : 
@@ -55,6 +65,11 @@ def sortArray(sortingFunction, name) :
             print(result[1])
         print(f"Temps d'éxecution : {result[0]} secondes")
         print('---------------------------------')
+        execTimes.append(result[0])
+    print('')
+    print('')
+    reportObj = {'name' : name, 'execTimes' : execTimes}
+    conclusionArray.append(reportObj)
 
 def mesurer_temps_execution (fonction, *args) :
     debut = time.time()
@@ -68,6 +83,36 @@ def translate(array) :
         dutchArray.append(array[i]%3)
     return dutchArray
 
+def printConclusion(array, sizes):
+    
+    headers = ['']
+    data = []
+    col_widths = []
+
+    for i in range(sizes) : 
+        headers.append(f'Nombre d\'éléments : {pow(10, i+1)}')
+
+    for i in range(len(array)) :
+        array[i]['execTimes'].insert(0, array[i]['name'])
+        data.append(array[i]['execTimes'])
+
+    for i in range(sizes + 1) : 
+        col_widths.append(25)
+
+    separator = "-" * (sum(col_widths) + len(col_widths) * 3 + 1)
+
+    # Format a single row
+    def format_row(row):
+        return "|" + "|".join(f" {str(item).ljust(width)} " for item, width in zip(row, col_widths)) + "|"
+    
+    # Print the table
+    print(separator)
+    print(format_row(headers))  # Header row
+    print(separator)
+    for row in data:
+        print(format_row(row))  # Data rows
+    print(separator)
+
 # Appel des fonctions de recherche et de tri
 searchArray(linearSearch, "Recherche linéaire")
 searchArray(recherche_dichotomique, "Recherche dichotomique")
@@ -77,3 +122,5 @@ sortArray(triaBulle, "Tri à bulle")
 sortArray(triinsertion, "Tri par insertion")
 sortArray(trihollandais, "Tri hollandais")
 sortArray(mergeSort, "Tri fusion")
+
+printConclusion(conclusionArray, arraysNumber)
