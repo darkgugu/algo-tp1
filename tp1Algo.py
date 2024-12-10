@@ -13,7 +13,7 @@ from Tris.trihollandais import trihollandais
 from Recherches.recherchedichotomique import recherche_dichotomique
 
 # Nombre de tableaux à générer
-arraysNumber = 3
+arraysNumber = 4
 
 # Tableau conclusion
 conclusionArray = []
@@ -40,7 +40,7 @@ def searchArray(searchFunction, name) :
                 print(f'Index de numéro à trouver (premier occurence) : {indexToFInd}')
             else : 
                 print('Nombre non trouvé dans le tableau')
-        print(f"Temps d'éxecution : {result[0]} secondes")
+        print(f"Temps d'éxecution : {result[0]} microsecondes")
         print('---------------------------------')
         execTimes.append(result[0])
     print('')
@@ -63,7 +63,7 @@ def sortArray(sortingFunction, name) :
             print(displayArray)
             print('Tableau trié : ')
             print(result[1])
-        print(f"Temps d'éxecution : {result[0]} secondes")
+        print(f"Temps d'éxecution : {result[0]} microsecondes")
         print('---------------------------------')
         execTimes.append(result[0])
     print('')
@@ -72,10 +72,10 @@ def sortArray(sortingFunction, name) :
     conclusionArray.append(reportObj)
 
 def mesurer_temps_execution (fonction, *args) :
-    debut = time.time()
+    debut = time.perf_counter()
     result = fonction(*args)
-    fin = time.time()
-    return [fin - debut, result]
+    fin = time.perf_counter()
+    return [(fin - debut) * 1000000, result]
 
 def translate(array) :
     dutchArray = []
@@ -85,7 +85,7 @@ def translate(array) :
 
 def printConclusion(array, sizes):
     
-    headers = ['']
+    headers = ['Temps exprimés en µs']
     data = []
     col_widths = []
 
