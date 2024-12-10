@@ -75,7 +75,7 @@ def mesurer_temps_execution (fonction, *args) :
     debut = time.perf_counter()
     result = fonction(*args)
     fin = time.perf_counter()
-    return [(fin - debut) * 1000000, result]
+    return [round(((fin - debut) * 1000000), 3), result]
 
 def translate(array) :
     dutchArray = []
