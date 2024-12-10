@@ -3,14 +3,14 @@ import time
 
 # Fonctions importées
 from generateArrays import generateArrays
-from linearSearch import linearSearch
-from selectionSort import selectionSort
-from quickSort import quickSortStart
-from mergeSort import mergeSort
-from triabulle import triaBulle
-from triinsertion import triinsertion
-from trihollandais import trihollandais
-from recherchedichotomique import recherche_dichotomique
+from Recherches.linearSearch import linearSearch
+from Tris.selectionSort import selectionSort
+from Tris.quickSort import quickSortStart
+from Tris.mergeSort import mergeSort
+from Tris.triabulle import triaBulle
+from Tris.triinsertion import triinsertion
+from Tris.trihollandais import trihollandais
+from Recherches.recherchedichotomique import recherche_dichotomique
 
 # Nombre de tableaux à générer
 arraysNumber = 3
